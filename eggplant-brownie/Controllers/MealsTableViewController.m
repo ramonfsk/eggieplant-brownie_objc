@@ -9,6 +9,13 @@
 #import "MealsTableViewController.h"
 #import "MealDAO.h"
 
+@interface MealsTableViewController ()
+
+@property MealDAO *mealDAO;
+@property ItemDAO *itemDAO;
+
+@end
+
 @implementation MealsTableViewController
 
 static MealsTableViewController *defaultMealsTableView = nil;
@@ -16,7 +23,8 @@ static MealsTableViewController *defaultMealsTableView = nil;
 - (void)viewDidLoad {
     self.navigationItem.title = @"Refeicoes";
     
-    self.dao = [MealDAO mealDAOInstance];
+    self.mealDAO = [MealDAO mealDAOInstance];
+    self.itemDAO = [ItemDAO itemDAOInstance];
     
 //    Meal *tmpMeal = [Meal new];
 //    tmpMeal.name = @"Pizza";
@@ -26,20 +34,13 @@ static MealsTableViewController *defaultMealsTableView = nil;
 //    NSLog(@"qtd: %li", (long)self.dao.total);
 }
 
-+ (MealsTableViewController *)mealsTableViewInstance {
-    if(!defaultMealsTableView)
-        defaultMealsTableView = [MealsTableViewController new];
-    
-    return defaultMealsTableView;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     //o código abaixo garante que a tabela recupere os dados antes de ser apresentada.
     [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dao.total;
+    return self.mealDAO.totalOfMeals;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,7 +51,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
     if(!cell)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     
-    Meal *meal = [self.dao mealOfIndex:indexPath.row];
+    Meal *meal = [self.mealDAO mealOfIndex:indexPath.row];
     
     cell.textLabel.text = meal.name;
     
@@ -58,10 +59,10 @@ static MealsTableViewController *defaultMealsTableView = nil;
 }
 
 - (void)addMeal:(Meal *)meal {
-    [_dao addMeal:meal];
+    [_mealDAO addMeal:meal];
     //Dessa forma a tableview só atualiza se eu adicionar algo via tela, em vez de recuperar de um BD
     //[self.tableView reloadData];
-    NSLog(@"cntMeals: %li", (long)_dao.total);
+    NSLog(@"cntMeals: %li", (long)_mealDAO.totalOfMeals);
 }
 
 - (void)updateMeal:(Meal *)meal {
@@ -72,7 +73,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
     if([segue.identifier isEqualToString:@"addMeal"]) {
         FormMealViewController *tableViewController = [segue destinationViewController];
         tableViewController.delegate = self;
-        NSLog(@"Achei o id da segue...");
+        //NSLog(@"Achei o id da segue...");
     }
     //Da forma acima, foi utilizado o design pattern delagate e uma view conhece somente os métodos que eu desginar
 }

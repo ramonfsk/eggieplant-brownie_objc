@@ -15,14 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSMutableArray *meals;
 
-- (NSInteger)total;
+- (NSInteger)totalOfMeals;
 - (void)addMeal:(Meal *)meal;
 - (void)remMeal:(Meal *)meal;
-
 - (Meal *)mealOfIndex:(NSInteger)index;
 - (NSInteger)indexOfMeal:(Meal *)meal;
-
 + (MealDAO *)mealDAOInstance;
+
+- (NSInteger)totalOfItens;
+- (Item *)itemOfIndex:(NSInteger)index;
+
 
 @end
 

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Meal.h"
 #import "MealDAO.h"
+#import "ItemDAO.h"
 
 @protocol AddMealDelegate <NSObject>
 
@@ -17,9 +17,10 @@
 
 @end
 
-@interface FormMealViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface FormMealViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property MealDAO *dao;
+@property MealDAO *mealDAO;
+@property ItemDAO *itemDAO;
 
 @property id<AddMealDelegate> delegate;
 

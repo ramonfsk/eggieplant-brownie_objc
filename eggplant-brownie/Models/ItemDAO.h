@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSMutableArray *itens;
 
++ (ItemDAO *)itemDAOInstance;
+
 @end
 
 NS_ASSUME_NONNULL_END
