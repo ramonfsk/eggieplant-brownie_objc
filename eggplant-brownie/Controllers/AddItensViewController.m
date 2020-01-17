@@ -7,7 +7,10 @@
 //
 
 #import "AddItensViewController.h"
+<<<<<<< HEAD
 #import "Item.h"
+=======
+>>>>>>> master
 
 @interface AddItensViewController ()
 
@@ -25,10 +28,13 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+<<<<<<< HEAD
 - (void)initWithDelegate:(id)delegate {
     _delegate = delegate;
 }
 
+=======
+>>>>>>> master
 /*
 #pragma mark - Navigation
 
@@ -40,12 +46,15 @@
 */
 
 - (void)addItem {
+<<<<<<< HEAD
     Item *tmp = [Item new];
     tmp.name = _txtfName.text;
     tmp.calories = [_txtfCalories.text doubleValue];
     
     [_delegate addItem:tmp];
     
+=======
+>>>>>>> master
     [self.navigationController popViewControllerAnimated:YES];
 }
 

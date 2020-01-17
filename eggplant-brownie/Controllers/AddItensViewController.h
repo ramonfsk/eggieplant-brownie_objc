@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+<<<<<<< HEAD
 #import "Item.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,6 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)initWithDelegate:(id)delegate;
 
+=======
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface AddItensViewController : UIViewController
+
+>>>>>>> master
 @end
 
 NS_ASSUME_NONNULL_END
