@@ -2,7 +2,7 @@
 //  AddItensViewController.m
 //  eggplant-brownie
 //
-//  Created by Ramon Ferreira do Nascimento on 16/01/20.
+//  Created by Ramon Ferreira do Nascimento on 17/01/20.
 //  Copyright © 2020 IBM. All rights reserved.
 //
 
@@ -22,13 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Novo Item";
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)initWithDelegate:(id)delegate {
     _delegate = delegate;
 }
-
 /*
 #pragma mark - Navigation
 

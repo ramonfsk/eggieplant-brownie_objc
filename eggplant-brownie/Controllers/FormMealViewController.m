@@ -33,7 +33,7 @@
 @implementation FormMealViewController
 
 - (void)viewDidLoad {
-    self.navigationItem.title = @"Cadastro de Refeição";
+    self.navigationItem.title = @"Nova Refeição";
     
     self.mealDAO = [MealDAO mealDAOInstance];
     self.itens = [ItemDAO itemDAOInstance];
@@ -93,7 +93,8 @@
         //NSLog(@"Item: %@", _arrayS[indexPath.row]);
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        [_selectedItens removeObjectAtIndex:indexPath.row];
+        if(_selectedItens.count > 0)
+            [_selectedItens removeObjectAtIndex:indexPath.row];
         
         for(Item *item in _selectedItens) {
             NSLog(@"%@", item.name);

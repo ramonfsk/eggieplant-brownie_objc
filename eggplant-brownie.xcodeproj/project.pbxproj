@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28E86A7423D1281C00A2D2B7 /* AddItensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E86A7223D1281C00A2D2B7 /* AddItensViewController.m */; };
-		28E86A7523D1281C00A2D2B7 /* AddItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E86A7323D1281C00A2D2B7 /* AddItensViewController.xib */; };
+		289CB6CD23D1AC9E000EE8FE /* AddItensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CB6CB23D1AC9E000EE8FE /* AddItensViewController.m */; };
+		289CB6CE23D1AC9E000EE8FE /* AddItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289CB6CC23D1AC9E000EE8FE /* AddItensViewController.xib */; };
 		FD3CB91C23C919E800B0FC98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CB91B23C919E800B0FC98 /* AppDelegate.m */; };
 		FD3CB91F23C919E800B0FC98 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CB91E23C919E800B0FC98 /* SceneDelegate.m */; };
 		FD3CB92223C919E800B0FC98 /* FormMealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CB92123C919E800B0FC98 /* FormMealViewController.m */; };
@@ -24,9 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		28E86A7123D1281C00A2D2B7 /* AddItensViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItensViewController.h; sourceTree = "<group>"; };
-		28E86A7223D1281C00A2D2B7 /* AddItensViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItensViewController.m; sourceTree = "<group>"; };
-		28E86A7323D1281C00A2D2B7 /* AddItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItensViewController.xib; sourceTree = "<group>"; };
+		289CB6CA23D1AC9E000EE8FE /* AddItensViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItensViewController.h; sourceTree = "<group>"; };
+		289CB6CB23D1AC9E000EE8FE /* AddItensViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItensViewController.m; sourceTree = "<group>"; };
+		289CB6CC23D1AC9E000EE8FE /* AddItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItensViewController.xib; sourceTree = "<group>"; };
 		FD3CB91723C919E800B0FC98 /* eggplant-brownie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eggplant-brownie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3CB91A23C919E800B0FC98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD3CB91B23C919E800B0FC98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 		FD3CB93A23C9336000B0FC98 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28E86A7123D1281C00A2D2B7 /* AddItensViewController.h */,
-				28E86A7223D1281C00A2D2B7 /* AddItensViewController.m */,
+				289CB6CA23D1AC9E000EE8FE /* AddItensViewController.h */,
+				289CB6CB23D1AC9E000EE8FE /* AddItensViewController.m */,
 				FD3CB92023C919E800B0FC98 /* FormMealViewController.h */,
 				FD3CB92123C919E800B0FC98 /* FormMealViewController.m */,
 				FDF3D39323CD15FB005F1807 /* MealsTableViewController.h */,
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				FD3CB92323C919E800B0FC98 /* Main.storyboard */,
-				28E86A7323D1281C00A2D2B7 /* AddItensViewController.xib */,
+				289CB6CC23D1AC9E000EE8FE /* AddItensViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			files = (
 				FD3CB92A23C919E900B0FC98 /* LaunchScreen.storyboard in Resources */,
 				FD3CB92723C919E900B0FC98 /* Assets.xcassets in Resources */,
-				28E86A7523D1281C00A2D2B7 /* AddItensViewController.xib in Resources */,
+				289CB6CE23D1AC9E000EE8FE /* AddItensViewController.xib in Resources */,
 				FD3CB92523C919E800B0FC98 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +210,7 @@
 				FDF3D39523CD15FB005F1807 /* MealsTableViewController.m in Sources */,
 				FD3CB91C23C919E800B0FC98 /* AppDelegate.m in Sources */,
 				FD3CB92D23C919E900B0FC98 /* main.m in Sources */,
-				28E86A7423D1281C00A2D2B7 /* AddItensViewController.m in Sources */,
+				289CB6CD23D1AC9E000EE8FE /* AddItensViewController.m in Sources */,
 				FD57AA8C23CD184A00693716 /* ItemDAO.m in Sources */,
 				FD3CB91F23C919E800B0FC98 /* SceneDelegate.m in Sources */,
 				FD57AA8923CD183400693716 /* MealDAO.m in Sources */,
