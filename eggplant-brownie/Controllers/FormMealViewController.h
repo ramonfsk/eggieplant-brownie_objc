@@ -7,17 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddItensViewController.h"
 #import "MealDAO.h"
 #import "ItemDAO.h"
 
 @protocol AddMealDelegate <NSObject>
 
-- (void)addMeal:(Meal *)meal;
-- (void)updateMeal:(Meal *)meal;
+- (void)addMeal:(Meal *)meal addItens:(NSMutableArray<Item *> *)itens;
+//- (void)addMeal:(Meal *)meal;
+//- (void)updateMeal:(Meal *)meal;
 
 @end
 
-@interface FormMealViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface FormMealViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, AddItemDelegate>
 
 @property MealDAO *mealDAO;
 @property ItemDAO *itemDAO;

@@ -23,8 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (MealDAO *)mealDAOInstance;
 
 - (NSInteger)totalOfItens;
+- (void)addItem:(Item *)item;
 - (Item *)itemOfIndex:(NSInteger)index;
-
+- (NSMutableArray<Item *> *)getAllItens;
 
 @end
 

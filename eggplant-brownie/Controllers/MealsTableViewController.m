@@ -58,15 +58,16 @@ static MealsTableViewController *defaultMealsTableView = nil;
     return cell;
 }
 
-- (void)addMeal:(Meal *)meal {
+- (void)addMeal:(Meal *)meal addItens:(NSMutableArray<Item *> *)itens {
     [_mealDAO addMeal:meal];
+    for(Item *item in itens) {
+        [_mealDAO addItem:item];
+    }
+    
     //Dessa forma a tableview só atualiza se eu adicionar algo via tela, em vez de recuperar de um BD
     //[self.tableView reloadData];
-    NSLog(@"cntMeals: %li", (long)_mealDAO.totalOfMeals);
-}
-
-- (void)updateMeal:(Meal *)meal {
-    
+    NSLog(@"cntMeals: %i", (int)_mealDAO.totalOfMeals);
+    NSLog(@"cntItens: %i", (int)_mealDAO.totalOfItens);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Item.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSMutableArray *itens;
 
 + (ItemDAO *)itemDAOInstance;
+
+- (NSInteger)totalOfItens;
+- (void)addItem:(Item *)item;
+- (Item *)itemOfIndex:(NSInteger)index;
+- (NSMutableArray<Item *> *)getAllItens;
 
 @end
 

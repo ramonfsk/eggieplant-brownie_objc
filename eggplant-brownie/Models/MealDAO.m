@@ -20,15 +20,18 @@ static MealDAO *defaultDAO = nil;
 
 - (id)init {
     self = [super init];
-    if(self)
+    if(self) {
         self.meals = [NSMutableArray new];
+        self.itens = [NSMutableArray new];
+    }
     
     return self;
 }
 
 + (MealDAO *)mealDAOInstance {
-    if(!defaultDAO)
+    if(!defaultDAO) {
         defaultDAO = [MealDAO new];
+    }
     
     return defaultDAO;
 }
@@ -69,7 +72,7 @@ static MealDAO *defaultDAO = nil;
     return [self.itens indexOfObject:item];
 }
 
-- (NSMutableArray<Item *> *)showItens {
+- (NSMutableArray<Item *> *)getAllItens {
     return _itens;
 }
 
