@@ -29,6 +29,7 @@
 - (void)initWithDelegate:(id)delegate {
     _delegate = delegate;
 }
+
 /*
 #pragma mark - Navigation
 
@@ -45,7 +46,7 @@
     tmp.calories = [_txtfCalories.text doubleValue];
     
     [_delegate addItem:tmp];
-    
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

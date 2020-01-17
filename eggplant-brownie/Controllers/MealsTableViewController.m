@@ -55,6 +55,10 @@ static MealsTableViewController *defaultMealsTableView = nil;
     
     cell.textLabel.text = meal.name;
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showDetailsCell:)];
+    
+    [cell addGestureRecognizer:longPress];
+    
     return cell;
 }
 
@@ -77,6 +81,17 @@ static MealsTableViewController *defaultMealsTableView = nil;
         //NSLog(@"Achei o id da segue...");
     }
     //Da forma acima, foi utilizado o design pattern delagate e uma view conhece somente os métodos que eu desginar
+}
+
+- (void)showDetailsCell:(UILongPressGestureRecognizer *)gesture {
+    if(gesture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"longpress funfou mulek doido!");
+        UITableViewCell *cell = (UITableViewCell *)gesture.view;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        NSLog(@"longpress ref: %@", [_mealDAO mealOfIndex:indexPath.row].name);
+    }
 }
 
 @end
