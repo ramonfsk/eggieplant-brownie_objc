@@ -89,6 +89,22 @@ static MealsTableViewController *defaultMealsTableView = nil;
         UITableViewCell *cell = (UITableViewCell *)gesture.view;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Meal *meal = [_mealDAO mealOfIndex:indexPath.row];
+        
+        //A tarefa abaixo precisar ser movida para classe reponsável por ela.
+        NSString *msg = [NSString stringWithFormat:@"\nFelicidade: %i", meal.happiness];
+        
+        for(Item *item in meal.itens) {
+            [msg stringByAppendingFormat:@"\n%@ - Calorias: %f", item.name, item.calories];
+        }
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:meal.name message:msg preferredStyle: UIAlertControllerStyleAlert];
+        
+        UIAlertAction *btnOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        
+        [alert addAction:btnOK];
+        
+        [self presentViewController:alert animated:YES completion:nil];
         
         NSLog(@"longpress ref: %@", [_mealDAO mealOfIndex:indexPath.row].name);
     }

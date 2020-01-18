@@ -7,6 +7,7 @@
 //
 
 #import "MealDAO.h"
+#import "Item.h"
 
 @interface MealDAO () 
 

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSMutableArray<Item *> *itens;
 
 - (double)totalOfCalories;
+- (NSString *)showDetails;
 
 @end
 

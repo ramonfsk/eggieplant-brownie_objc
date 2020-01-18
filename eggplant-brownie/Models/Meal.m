@@ -20,4 +20,14 @@
     return total;
 }
 
+- (NSString *)showDetails {
+    NSString *msg = [NSString stringWithFormat:@"\nFelicidade: %i", _happiness];
+    
+    for(Item *item in _itens) {
+        [msg stringByAppendingFormat:@"\n%@ - Calorias: %f", item.name, item.calories];
+    }
+    
+    return msg;
+}
+
 @end
