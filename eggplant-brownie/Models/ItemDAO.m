@@ -7,7 +7,6 @@
 //
 
 #import "ItemDAO.h"
-#import "Item.h"
 
 @implementation ItemDAO
 
@@ -16,7 +15,7 @@ static ItemDAO *defaultDAO = nil;
 - (id)init {
     self = [super init];
     if(self)
-        self.itens = [NSMutableArray new];
+        _itens = [NSMutableArray new];
     
     return self;
 }

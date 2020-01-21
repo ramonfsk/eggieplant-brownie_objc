@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property int happiness;
 @property NSMutableArray<Item *> *itens;
 
+- (void)addItem:(Item *)item;
+- (void)remItem:(Item *)item;
 - (double)totalOfCalories;
 - (NSString *)showDetails;
 

@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)totalOfItens;
 - (void)addItem:(Item *)item;
+- (void)remItem:(Item *)item;
 - (Item *)itemOfIndex:(NSInteger)index;
+- (NSInteger)indexOfItem:(Item *)item;
 - (NSMutableArray<Item *> *)getAllItens;
 
 @end

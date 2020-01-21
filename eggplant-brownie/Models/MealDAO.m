@@ -7,13 +7,6 @@
 //
 
 #import "MealDAO.h"
-#import "Item.h"
-
-@interface MealDAO () 
-
-@property NSMutableArray<Item *> *itens;
-
-@end
 
 @implementation MealDAO
 
@@ -22,8 +15,8 @@ static MealDAO *defaultDAO = nil;
 - (id)init {
     self = [super init];
     if(self) {
-        self.meals = [NSMutableArray new];
-        self.itens = [NSMutableArray new];
+        _meals = [NSMutableArray new];
+        //_itens = [NSMutableArray new];
     }
     
     return self;
@@ -55,30 +48,6 @@ static MealDAO *defaultDAO = nil;
 
 - (NSInteger)indexOfMeal:(Meal *)meal {
     return [self.meals indexOfObject:meal];
-}
-
-- (void)addItem:(Item *)item {
-    [_itens addObject:item];
-}
-
-- (void)remItem:(Item *)item {
-    [_itens removeObject:item];
-}
-
-- (Item *)itemOfIndex:(NSInteger)index {
-    return self.itens[index];
-}
-
-- (NSInteger)indexOfItem:(Item *)item {
-    return [self.itens indexOfObject:item];
-}
-
-- (NSMutableArray<Item *> *)getAllItens {
-    return _itens;
-}
-
-- (NSInteger)totalOfItens {
-    return _itens.count;
 }
 
 @end

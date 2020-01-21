@@ -9,8 +9,8 @@
 #import "FormMealViewController.h"
 #import "MealsTableViewController.h"
 #import "AddItensViewController.h"
-#import "Meal.h"
-#import "Item.h"
+#import "MealDAO.h"
+#import "ItemDAO.h"
 
 @interface FormMealViewController ()
 
@@ -18,9 +18,9 @@
 @property IBOutlet UITextField *txtfHappiness;
 @property IBOutlet UITableView *itensTableView;
 
-@property Meal *meal;
-@property Item *item;
-
+@property MealDAO *mealDAO;
+//@property ItemDAO *itens;
+//@property NSMutableArray<Meal *> *meals;
 @property ItemDAO *itens;
 @property NSMutableArray<Item *> *selectedItens;
 
@@ -35,8 +35,8 @@
 - (void)viewDidLoad {
     self.navigationItem.title = @"Nova Refeição";
     
-    self.mealDAO = [MealDAO mealDAOInstance];
-    self.itens = [ItemDAO itemDAOInstance];
+    _mealDAO = [MealDAO mealDAOInstance];
+    _itens = [ItemDAO itemDAOInstance];
     _selectedItens = [NSMutableArray new];
     //_delegate = [MealsTableViewController mealsTableViewInstance];
     
@@ -50,12 +50,15 @@
 - (void)add {
     NSLog(@"Botao clicado!");
     //NSLog(@"Capturado os txtfield: %@ | %@", _txtfName.text, _txtfHappy.text);
-    _meal = [Meal new];
-    _meal.name = _txtfName.text;
-    _meal.happiness =  [_txtfHappiness.text intValue];
-    NSLog(@"Capturado os txtfield: %@ | %i", _meal.name, _meal.happiness);
+    Meal *tmp = [Meal new];
+    tmp.name = _txtfName.text;
+    tmp.happiness =  [_txtfHappiness.text intValue];
+    for(Item *item in _selectedItens) {
+        [tmp addItem:item];
+    }
+    NSLog(@"Capturado os txtfield: %@ | %i", tmp.name, tmp.happiness);
     
-    [_delegate addMeal:_meal addItens:_selectedItens];
+    [_delegate addMeal:tmp];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -74,7 +77,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 
     cell.textLabel.text = [_itens itemOfIndex:indexPath.row].name;
-    NSLog(@"iae: %@", [_itens itemOfIndex:indexPath.row].name);
+    NSLog(@"iae: %@", [_itens itemOfIndex:indexPath.row]);
     
     return cell;
 }
@@ -86,8 +89,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         //NSInteger numRow = (int)indexPath.row;
         Item *tmp = [Item new];
-        [tmp setName:[_itens itemOfIndex:indexPath.row].name];
-        [tmp setCalories:[_itens itemOfIndex:indexPath.row].calories];
+        tmp = [_itens itemOfIndex:indexPath.row];
         NSLog(@"name: %@ | cal: %f", tmp.name, tmp.calories);
         [_selectedItens addObject:tmp];
         //NSLog(@"Item: %@", _arrayS[indexPath.row]);

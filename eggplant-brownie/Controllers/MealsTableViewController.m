@@ -12,7 +12,6 @@
 @interface MealsTableViewController ()
 
 @property MealDAO *mealDAO;
-@property ItemDAO *itemDAO;
 
 @end
 
@@ -22,10 +21,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
 
 - (void)viewDidLoad {
     self.navigationItem.title = @"Refeicoes";
-    
-    self.mealDAO = [MealDAO mealDAOInstance];
-    self.itemDAO = [ItemDAO itemDAOInstance];
-    
+    _mealDAO = [MealDAO mealDAOInstance];
 //    Meal *tmpMeal = [Meal new];
 //    tmpMeal.name = @"Pizza";
 //    tmpMeal.happiness = 5;
@@ -40,7 +36,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.mealDAO.totalOfMeals;
+    return _mealDAO.totalOfMeals;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,7 +47,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
     if(!cell)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     
-    Meal *meal = [self.mealDAO mealOfIndex:indexPath.row];
+    Meal *meal = [_mealDAO mealOfIndex:indexPath.row];
     
     cell.textLabel.text = meal.name;
     
@@ -62,16 +58,14 @@ static MealsTableViewController *defaultMealsTableView = nil;
     return cell;
 }
 
-- (void)addMeal:(Meal *)meal addItens:(NSMutableArray<Item *> *)itens {
+- (void)addMeal:(Meal *)meal {
+    NSLog(@"cheguei aqui, preparando para add uma nova refeicao");
     [_mealDAO addMeal:meal];
-    for(Item *item in itens) {
-        [_mealDAO addItem:item];
-    }
     
     //Dessa forma a tableview só atualiza se eu adicionar algo via tela, em vez de recuperar de um BD
     //[self.tableView reloadData];
-    NSLog(@"cntMeals: %i", (int)_mealDAO.totalOfMeals);
-    NSLog(@"cntItens: %i", (int)_mealDAO.totalOfItens);
+    NSLog(@"cntMeals: %lu", _mealDAO.totalOfMeals);
+    //NSLog(@"cntItens: %lu", _mealDAO.totalOfItens);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -91,12 +85,7 @@ static MealsTableViewController *defaultMealsTableView = nil;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Meal *meal = [_mealDAO mealOfIndex:indexPath.row];
         
-        //A tarefa abaixo precisar ser movida para classe reponsável por ela.
-        NSString *msg = [NSString stringWithFormat:@"\nFelicidade: %i", meal.happiness];
-        
-        for(Item *item in meal.itens) {
-            [msg stringByAppendingFormat:@"\n%@ - Calorias: %f", item.name, item.calories];
-        }
+        NSString *msg = [meal showDetails];
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:meal.name message:msg preferredStyle: UIAlertControllerStyleAlert];
         

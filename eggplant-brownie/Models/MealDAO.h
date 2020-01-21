@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Meal.h"
+#import "Item.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,8 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)indexOfMeal:(Meal *)meal;
 + (MealDAO *)mealDAOInstance;
 
-- (NSInteger)totalOfItens;
 - (void)addItem:(Item *)item;
+- (void)remItem:(Item *)item;
+- (NSInteger)totalOfItens;
 - (Item *)itemOfIndex:(NSInteger)index;
 - (NSMutableArray<Item *> *)getAllItens;
 
