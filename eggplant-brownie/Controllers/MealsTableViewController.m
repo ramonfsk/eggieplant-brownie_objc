@@ -8,10 +8,13 @@
 
 #import "MealsTableViewController.h"
 #import "MealDAO.h"
+#import "Alert.h"
 
 @interface MealsTableViewController ()
 
 @property MealDAO *mealDAO;
+
+- (void)removeMeal;
 
 @end
 
@@ -79,19 +82,22 @@ static MealsTableViewController *defaultMealsTableView = nil;
 
 - (void)showDetailsCell:(UILongPressGestureRecognizer *)gesture {
     if(gesture.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"longpress funfou mulek doido!");
+        //NSLog(@"longpress funfou mulek doido!");
         UITableViewCell *cell = (UITableViewCell *)gesture.view;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Meal *meal = [_mealDAO mealOfIndex:indexPath.row];
         
-        NSString *msg = [meal showDetails];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:meal.name message:[meal showDetails] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *btnOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:meal.name message:msg preferredStyle: UIAlertControllerStyleAlert];
-        
-        UIAlertAction *btnOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *btnRemove = [UIAlertAction actionWithTitle:@"Remover" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+            [self.mealDAO remMeal:self.mealDAO.meals[indexPath.row]];
+            [self.tableView reloadData];
+        }];
         
         [alert addAction:btnOK];
+        [alert addAction:btnRemove];
         
         [self presentViewController:alert animated:YES completion:nil];
         

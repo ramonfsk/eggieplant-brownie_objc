@@ -11,6 +11,7 @@
 #import "AddItensViewController.h"
 #import "MealDAO.h"
 #import "ItemDAO.h"
+#import "Alert.h"
 
 @interface FormMealViewController ()
 
@@ -47,20 +48,30 @@
     //_arrayS = @[@"Molho de Tomate", @"Queijo", @"Molho Apimentado", @"Manjericão"];
 }
 
-- (void)add {
-    NSLog(@"Botao clicado!");
-    //NSLog(@"Capturado os txtfield: %@ | %@", _txtfName.text, _txtfHappy.text);
+- (Meal *)catchDataForm {
     Meal *tmp = [Meal new];
     tmp.name = _txtfName.text;
     tmp.happiness =  [_txtfHappiness.text intValue];
+    
     for(Item *item in _selectedItens) {
         [tmp addItem:item];
     }
-    NSLog(@"Capturado os txtfield: %@ | %i", tmp.name, tmp.happiness);
+    //NSLog(@"Capturado os txtfield: %@ | %i", tmp.name, tmp.happiness);
     
-    [_delegate addMeal:tmp];
+    return tmp;
+}
+
+- (void)add {
+    NSLog(@"Botao clicado!");
     
-    [self.navigationController popViewControllerAnimated:YES];
+    Meal *tmp = self.catchDataForm;
+    
+    if(!tmp) {
+        [[Alert alloc] showAlert:@"Atenção" :@"Erro ao recuperar dados do formulário..." :self];
+    } else {
+        [_delegate addMeal:tmp];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 //MARK: Tabela de selecao de itens
@@ -114,15 +125,22 @@
 
 - (void)addItem:(Item *)item {
     [_itens addItem:item];
-    NSLog(@"add caraios: %@", item.name);
+    //NSLog(@"add caraios: %@", item.name);
     //[_itensTableView reloadData];
+    if(_itensTableView) {
+        [_itensTableView reloadData];
+    } else {
+        Alert *alert = [Alert new];
+        [alert showAlert:@"Desculpe" :@"Não foi possível atualizar os dados da tabela..." :self];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_itensTableView reloadData];
-    
-    for(Item *item in _itens.getAllItens) {
-        NSLog(@"%@", item.name);
+    if(_itensTableView) {
+        [_itensTableView reloadData];
+    } else {
+        Alert *alert = [Alert new];
+        [alert showAlert:@"Desculpe" :@"Não foi possível recuperar os dados da tabela..." :self];
     }
 }
 

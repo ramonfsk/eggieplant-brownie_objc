@@ -20,6 +20,7 @@
 		FD3CB93823C9286100B0FC98 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CB93723C9286100B0FC98 /* Item.m */; };
 		FD57AA8923CD183400693716 /* MealDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = FD57AA8823CD183400693716 /* MealDAO.m */; };
 		FD57AA8C23CD184A00693716 /* ItemDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = FD57AA8B23CD184A00693716 /* ItemDAO.m */; };
+		FDA32F9D23D735DD00E1F16C /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA32F9C23D735DD00E1F16C /* Alert.m */; };
 		FDF3D39523CD15FB005F1807 /* MealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D39423CD15FB005F1807 /* MealsTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		FD57AA8823CD183400693716 /* MealDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MealDAO.m; sourceTree = "<group>"; };
 		FD57AA8A23CD184A00693716 /* ItemDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDAO.h; sourceTree = "<group>"; };
 		FD57AA8B23CD184A00693716 /* ItemDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDAO.m; sourceTree = "<group>"; };
+		FDA32F9B23D735DD00E1F16C /* Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		FDA32F9C23D735DD00E1F16C /* Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		FDF3D39323CD15FB005F1807 /* MealsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MealsTableViewController.h; sourceTree = "<group>"; };
 		FDF3D39423CD15FB005F1807 /* MealsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MealsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +110,8 @@
 				FD57AA8823CD183400693716 /* MealDAO.m */,
 				FD57AA8A23CD184A00693716 /* ItemDAO.h */,
 				FD57AA8B23CD184A00693716 /* ItemDAO.m */,
+				FDA32F9B23D735DD00E1F16C /* Alert.h */,
+				FDA32F9C23D735DD00E1F16C /* Alert.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				FD3CB93823C9286100B0FC98 /* Item.m in Sources */,
 				FD3CB93523C925B100B0FC98 /* Meal.m in Sources */,
 				FD3CB92223C919E800B0FC98 /* FormMealViewController.m in Sources */,
+				FDA32F9D23D735DD00E1F16C /* Alert.m in Sources */,
 				FDF3D39523CD15FB005F1807 /* MealsTableViewController.m in Sources */,
 				FD3CB91C23C919E800B0FC98 /* AppDelegate.m in Sources */,
 				FD3CB92D23C919E900B0FC98 /* main.m in Sources */,

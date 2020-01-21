@@ -25,5 +25,7 @@
 
 @property id<AddMealDelegate> delegate;
 
+- (Meal *)catchDataForm;
+
 @end
 
