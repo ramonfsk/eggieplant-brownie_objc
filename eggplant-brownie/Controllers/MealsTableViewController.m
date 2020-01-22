@@ -14,8 +14,6 @@
 
 @property MealDAO *mealDAO;
 
-- (void)removeMeal;
-
 @end
 
 @implementation MealsTableViewController
@@ -25,12 +23,15 @@ static MealsTableViewController *defaultMealsTableView = nil;
 - (void)viewDidLoad {
     self.navigationItem.title = @"Refeicoes";
     _mealDAO = [MealDAO mealDAOInstance];
-//    Meal *tmpMeal = [Meal new];
-//    tmpMeal.name = @"Pizza";
-//    tmpMeal.happiness = 5;
-//    [self.dao addMeal:tmpMeal];
-//
-//    NSLog(@"qtd: %li", (long)self.dao.total);
+    
+    NSURL *dir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    dir = [dir URLByAppendingPathComponent:@"meal"];
+    NSLog(@"%@", dir);
+    
+    NSData *data = [NSData dataWithContentsOfURL:dir];
+    //_mealDAO.meals = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:nil];
+    _mealDAO = [NSKeyedUnarchiver unarchivedObjectOfClass:[MealDAO class] fromData:data error:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,6 +65,12 @@ static MealsTableViewController *defaultMealsTableView = nil;
 - (void)addMeal:(Meal *)meal {
     NSLog(@"cheguei aqui, preparando para add uma nova refeicao");
     [_mealDAO addMeal:meal];
+    
+    NSURL *dir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    dir = [dir URLByAppendingPathComponent:@"meal"];
+    //NSLog(@"%@", dir);
+    
+    [[NSKeyedArchiver archivedDataWithRootObject:_mealDAO requiringSecureCoding:NO error:nil] writeToURL:dir atomically:YES];
     
     //Dessa forma a tableview só atualiza se eu adicionar algo via tela, em vez de recuperar de um BD
     //[self.tableView reloadData];

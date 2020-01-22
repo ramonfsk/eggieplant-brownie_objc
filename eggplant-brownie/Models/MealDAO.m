@@ -22,6 +22,16 @@ static MealDAO *defaultDAO = nil;
     return self;
 }
 
+- (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    [coder encodeObject:_meals forKey:@"Meals"];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
+    _meals = [coder decodeObjectForKey:@"Meals"];
+    
+    return self;
+}
+
 + (MealDAO *)mealDAOInstance {
     if(!defaultDAO) {
         defaultDAO = [MealDAO new];

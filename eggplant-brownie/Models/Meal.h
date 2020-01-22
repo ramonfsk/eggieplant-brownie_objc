@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Meal : NSObject
+@interface Meal : NSObject<NSCoding>
 
 @property NSString *name;
 @property int happiness;

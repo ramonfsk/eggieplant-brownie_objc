@@ -10,4 +10,16 @@
 
 @implementation Item
 
+- (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    [coder encodeObject:_name forKey:@"Name"];
+    [coder encodeDouble:_calories forKey:@"Calories"];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
+    _name = [coder decodeObjectForKey:@"Name"];
+    _calories = [coder decodeDoubleForKey:@"Calories"];
+    
+    return self;
+}
+
 @end

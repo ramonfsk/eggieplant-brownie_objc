@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Item : NSObject
+@interface Item : NSObject<NSCoding>
 
 @property NSString *name;
 @property double calories;

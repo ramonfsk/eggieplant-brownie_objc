@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MealDAO : NSObject
+@interface MealDAO : NSObject<NSCoding>
 
 @property NSMutableArray *meals;
 
@@ -21,13 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)remMeal:(Meal *)meal;
 - (Meal *)mealOfIndex:(NSInteger)index;
 - (NSInteger)indexOfMeal:(Meal *)meal;
-+ (MealDAO *)mealDAOInstance;
 
-- (void)addItem:(Item *)item;
-- (void)remItem:(Item *)item;
-- (NSInteger)totalOfItens;
-- (Item *)itemOfIndex:(NSInteger)index;
-- (NSMutableArray<Item *> *)getAllItens;
++ (MealDAO *)mealDAOInstance;
 
 @end
 

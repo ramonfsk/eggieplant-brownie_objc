@@ -20,6 +20,20 @@ static Meal *defaultMeal = nil;
     return self;
 }
 
+- (void)encodeWithCoder:(nonnull NSCoder *)coder {
+    [coder encodeObject:_name forKey:@"Name"];
+    [coder encodeInt:_happiness forKey:@"Happiness"];
+    [coder encodeObject:_itens forKey:@"Itens"];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
+    _name = [coder decodeObjectForKey:@"Name"];
+    _happiness = [coder decodeIntForKey:@"Happiness"];
+    _itens = [coder decodeObjectForKey:@"Itens"];
+    
+    return self;
+}
+
 - (void)addItem:(Item *)item {
     [_itens addObject:item];
 }
